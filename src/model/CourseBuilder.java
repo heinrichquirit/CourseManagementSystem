@@ -1,15 +1,14 @@
-package io.github.heinrichquirit.coursemanagement.objects;
+package model;
 
 import java.util.HashSet;
 
 public class CourseBuilder {
 
 	private String courseId;
-	private String courseName;
-	private String coordinator;
-	private int enrolments;
+	private String courseTeacher;
+	private int studentsEnrolled;
 	private int enrolmentCapacity;
-	private double studentCharge;
+	private double studentCharges;
 	private HashSet<Student> students;
 	private double income;
 	private double runningCosts;
@@ -21,18 +20,13 @@ public class CourseBuilder {
 		return this;
 	}
 	
-	public CourseBuilder setCourseName(String courseName) {
-		this.courseName = courseName;
+	public CourseBuilder setCourseTeacher(String courseTeacher) {
+		this.courseTeacher = courseTeacher;
 		return this;
 	}
 	
-	public CourseBuilder setCoordinator(String coordinator) {
-		this.coordinator = coordinator;
-		return this;
-	}
-	
-	public CourseBuilder setEnrolments(int enrolments) {
-		this.enrolments = enrolments;
+	public CourseBuilder setStudentsEnrolled(int studentsEnrolled) {
+		this.studentsEnrolled = studentsEnrolled;
 		return this;
 	}
 	
@@ -41,8 +35,8 @@ public class CourseBuilder {
 		return this;
 	}
 	
-	public CourseBuilder setStudentCharge(double studentCharge) {
-		this.studentCharge = studentCharge;
+	public CourseBuilder setStudentCharges(double studentCharges) {
+		this.studentCharges = studentCharges;
 		return this;
 	}
 	
@@ -63,8 +57,15 @@ public class CourseBuilder {
 	
 	public Course createCourse() {
 		return new Course(
-							courseId, courseName, coordinator, enrolments, 
-							enrolmentCapacity, studentCharge, students,
-							income, runningCosts);
+							courseId, 
+							courseTeacher, 
+							studentsEnrolled, 
+							enrolmentCapacity,
+							studentCharges,
+							students,
+							income,
+							runningCosts
+						 );
 	}
+	
 }

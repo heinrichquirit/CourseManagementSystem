@@ -79,5 +79,17 @@ public class Student implements Person {
 	public void hasBeenPreviouslyEnroled(boolean hasPreviousEnrolment) {
 		this.hasPreviousEnrolment = hasPreviousEnrolment;
 	}
+	
+	@Override
+	public String toString() {
+		return String.format(
+								"%s%s%s%s%s%d%s%s%s%d%s%b", 
+								"Id: ", id,
+								"Name: ", name,
+								"Age: ", age,
+								"Address: ", address,
+								"CourseFees: ", courseFees,
+								"PreviouslyEnrolled: ", hasPreviousEnrolment);
+	}
 
 }

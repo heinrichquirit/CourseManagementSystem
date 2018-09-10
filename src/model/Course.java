@@ -2,6 +2,8 @@ package model;
 
 import java.util.HashSet;
 
+import util.CourseType;
+
 public class Course {
 
 	private String courseId;
@@ -12,6 +14,7 @@ public class Course {
 	private HashSet<Student> students;
 	private double income;
 	private double runningCosts;
+	private CourseType courseType;
 
 	public Course() {
 		courseId = "";
@@ -22,6 +25,7 @@ public class Course {
 		students = null;
 		income = 0.0;
 		runningCosts = 0.0;
+		courseType = null;
 	}
 
 	public Course(
@@ -32,7 +36,8 @@ public class Course {
 			double studentCharges, 
 			HashSet<Student> students,
 			double income, 
-			double runningCosts) {
+			double runningCosts,
+			CourseType courseType) {
 		this.courseId = courseId;
 		this.courseTeacher = courseTeacher;
 		this.studentsEnrolled = studentsEnrolled;
@@ -41,6 +46,7 @@ public class Course {
 		this.students = students;
 		this.income = income;
 		this.runningCosts = runningCosts;
+		this.courseType = courseType;
 	}
 
 }

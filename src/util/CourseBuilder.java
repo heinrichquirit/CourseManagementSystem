@@ -1,6 +1,9 @@
-package model;
+package util;
 
 import java.util.HashSet;
+
+import model.Course;
+import model.Student;
 
 public class CourseBuilder {
 
@@ -12,6 +15,7 @@ public class CourseBuilder {
 	private HashSet<Student> students;
 	private double income;
 	private double runningCosts;
+	private CourseType courseType;
 	
 	public CourseBuilder() {}
 	
@@ -55,6 +59,11 @@ public class CourseBuilder {
 		return this;
 	}
 	
+	public CourseBuilder setCourseType(CourseType courseType) {
+		this.courseType = courseType;
+		return this;
+	}
+	
 	public Course createCourse() {
 		return new Course(
 							courseId, 
@@ -64,7 +73,8 @@ public class CourseBuilder {
 							studentCharges,
 							students,
 							income,
-							runningCosts
+							runningCosts,
+							courseType
 						 );
 	}
 	

@@ -1,11 +1,13 @@
 package model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
 import util.CourseType;
 
-public class Course {
+public class Course implements Serializable {
 
+	private static final long serialVersionUID = 5420132462390929675L;
 	private String courseId;
 	private String courseTeacher;
 	private int studentsEnrolled;

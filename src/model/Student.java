@@ -1,10 +1,14 @@
 package model;
 
+import java.io.Serializable;
+
 import model.interfaces.Person;
 
-public class Student implements Person {
+public class Student implements Person, Serializable {
 
-	private String id;
+	private static final long serialVersionUID = -3796095927356107079L;
+	private static int count;
+	private int id;
 	private String name;
 	private int age;
 	private String address;
@@ -12,7 +16,7 @@ public class Student implements Person {
 	private boolean hasPreviousEnrolment;
 	
 	public Student() {
-		id = "";
+		id = count++;
 		name = "";
 		age = 0;
 		address = "";
@@ -20,11 +24,10 @@ public class Student implements Person {
 		hasPreviousEnrolment = false;
 	}
 	
-	public Student(
-					String id, String name, 
+	public Student(String name, 
 					int age, String address, 
 					double courseFees, boolean hasPreviousEnrolment) {
-		this.id = id;
+		id = count++;
 		this.name = name;
 		this.age = age;
 		this.address = address;
@@ -32,7 +35,7 @@ public class Student implements Person {
 		this.hasPreviousEnrolment = hasPreviousEnrolment;
 	}
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 	
@@ -83,7 +86,7 @@ public class Student implements Person {
 	@Override
 	public String toString() {
 		return String.format(
-								"%s%s%s%s%s%d%s%s%s%d%s%b", 
+								"%s%d%s%s%s%d%s%s%s%d%s%b", 
 								"Id: ", id,
 								"Name: ", name,
 								"Age: ", age,

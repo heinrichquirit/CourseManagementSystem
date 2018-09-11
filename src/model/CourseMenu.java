@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Scanner;
 
 import util.CourseType;
@@ -30,7 +31,7 @@ public class CourseMenu {
 			withdrawStudent();
 			break;
 		case 3:
-			// Advance to next line
+			// Flush and advance to next line
 			in.nextLine();
 			
 			System.out.println("Enter one of the following course type:"
@@ -56,16 +57,20 @@ public class CourseMenu {
 			break;
 		default:
 			invalidOption();
+			displayOptions();
 			break;
 		}
 	}
 	
 	private void addStudent() {
 		
+		// Check if is enrolled in course
+		// Or course is full
+		
 	}
 	
 	private void withdrawStudent() {
-		
+	
 	}
 	
 	private void displayStudent(CourseType type) {
@@ -77,7 +82,7 @@ public class CourseMenu {
 	}
 	
 	private void quit() {
-		System.out.println("You have exited the system.");
+		System.out.println("You have exited the program.");
 	}
 	
 	private void invalidOption() {

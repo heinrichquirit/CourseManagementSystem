@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 
-import util.CourseType;
-import util.MenuOption;
+import model.enums.CourseType;
+import model.enums.MenuOption;
 
 public class CourseMenu {
 	
@@ -66,6 +66,7 @@ public class CourseMenu {
 		
 		// Check if is enrolled in course
 		// Or course is full
+		System.out.println("Added student");
 		
 	}
 	

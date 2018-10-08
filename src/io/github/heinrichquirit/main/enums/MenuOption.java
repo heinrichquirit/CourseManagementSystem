@@ -1,4 +1,4 @@
-package model.enums;
+package io.github.heinrichquirit.main.enums;
 
 public enum MenuOption {
 	
@@ -6,7 +6,11 @@ public enum MenuOption {
 	OPTION_TWO(2, "2. Withdraw a student from a course"),
 	OPTION_THREE(3, "3. Display a student list for a course"),
 	OPTION_FOUR(4, "4. Display the course figures"),
-	OPTION_FIVE(5, "5. Quit");
+	OPTION_FIVE(5, "5. Display course teacher information."),
+	OPTION_SIX(6, "6. Add payment options."),
+	OPTION_SEVEN(7, "7. Enable Student Nofications."),
+	OPTION_EIGHT(8, "8. Register or View for Catch up session"),
+	OPTION_NINE(9, "9. Quit");
 	
 	private final int id;
 	private final String description;

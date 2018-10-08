@@ -1,4 +1,4 @@
-package model.enums;
+package io.github.heinrichquirit.main.enums;
 
 public enum CourseType {
 

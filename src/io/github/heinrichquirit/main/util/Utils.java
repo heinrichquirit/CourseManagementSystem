@@ -1,17 +1,18 @@
-package util;
+package io.github.heinrichquirit.main.util;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.Map;
 
-import client.CourseManagementSystem;
-import model.Course;
-import model.Student;
+import io.github.heinrichquirit.main.CourseManagementSystem;
+import io.github.heinrichquirit.main.objects.Course;
+import io.github.heinrichquirit.main.objects.Student;
 
 public class Utils {
 
 	public static boolean studentIsInCourse(int studentId) {
 		HashSet<Integer> studentIds = new HashSet<Integer>();
-		Map<String, Course> courses = CourseManagementSystem.getInstance().getCourses();
+		Map<String, Course> courses = CourseManagementSystem.getInstance().getMap();
 		for (Student s : courses.get("cooking").getStudents()) {
 			studentIds.add(s.getId());
 		}
@@ -26,7 +27,7 @@ public class Utils {
 	
 	public static String findStudentCourses(int studentId) {
 		StringBuilder sb = new StringBuilder();
-		Map<String, Course> courses = CourseManagementSystem.getInstance().getCourses();
+		Map<String, Course> courses = CourseManagementSystem.getInstance().getMap();
 		for (Student s : courses.get("cooking").getStudents()) {
 			if (s.getId() == studentId) {
 				sb.append("Cooking");
@@ -45,6 +46,10 @@ public class Utils {
 			}
 		}
 		return sb.toString();
+	}
+	
+	public static boolean studentExists(int id) {
+		return new File("students/" + id + ".dat").exists();
 	}
 	
 }

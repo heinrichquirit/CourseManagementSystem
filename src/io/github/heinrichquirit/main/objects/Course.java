@@ -1,15 +1,16 @@
-package model;
+package io.github.heinrichquirit.main.objects;
 
 import java.io.Serializable;
 import java.util.HashSet;
 
-import model.enums.CourseType;
+import io.github.heinrichquirit.main.enums.CourseType;
 
 public class Course implements Serializable {
 
 	private static final long serialVersionUID = 5420132462390929675L;
 	private String courseId;
 	private String courseTeacher;
+	private String teacherInfo;
 	private int enrolmentCapacity;
 	private double studentCharges;
 	private HashSet<Student> students;
@@ -20,6 +21,7 @@ public class Course implements Serializable {
 	public Course() {
 		courseId = "";
 		courseTeacher = "";
+		teacherInfo = "";
 		enrolmentCapacity = 0;
 		studentCharges = 0.0;
 		students = null;
@@ -31,6 +33,7 @@ public class Course implements Serializable {
 	public Course(
 			String courseId, 
 			String courseTeacher, 
+			String teacherInfo,
 			int enrolmentCapacity,
 			double studentCharges, 
 			HashSet<Student> students,
@@ -39,6 +42,7 @@ public class Course implements Serializable {
 			CourseType courseType) {
 		this.courseId = courseId;
 		this.courseTeacher = courseTeacher;
+		this.teacherInfo = teacherInfo;
 		this.enrolmentCapacity = enrolmentCapacity;
 		this.studentCharges = studentCharges;
 		this.students = students;
@@ -61,6 +65,14 @@ public class Course implements Serializable {
 	
 	public void setCourseTeacher(String courseTeacher) {
 		this.courseTeacher = courseTeacher;
+	}
+	
+	public String getTeacherInfo() {
+		return teacherInfo;
+	}
+	
+	public void setTeacherInfo(String teacherInfo) {
+		this.teacherInfo = teacherInfo;
 	}
 	
 	public int getStudentsEnrolled() {

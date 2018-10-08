@@ -1,9 +1,9 @@
-package model;
+package io.github.heinrichquirit.main.objects;
 
 import java.io.Serializable;
 
-import model.interfaces.Person;
-import util.Utils;
+import io.github.heinrichquirit.main.interfaces.Person;
+import io.github.heinrichquirit.main.util.Utils;
 
 public class Student implements Person, Serializable {
 

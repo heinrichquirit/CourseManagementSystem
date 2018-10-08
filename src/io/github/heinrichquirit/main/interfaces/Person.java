@@ -1,4 +1,4 @@
-package model.interfaces;
+package io.github.heinrichquirit.main.interfaces;
 
 public interface Person {
 

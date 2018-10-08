@@ -1,7 +1,9 @@
 package client;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 import model.Course;
@@ -11,13 +13,33 @@ import model.enums.CourseType;
 
 public class CourseManagementSystem {
 	
+	private static CourseManagementSystem instance;
+	private static HashMap<String, Course> courses = new HashMap<String, Course>();
+	
+	private CourseManagementSystem() {
+		instance = this;
+	}
+	
 	public static void main(String[] args) {
-		
+		new CourseManagementSystem();
 		// If there is no initial data, load sample 
 		loadSampleData();
+		
+		System.out.println("Listing sample cooking students.");
+		for (Student s : courses.get("cooking").getStudents()) {
+			System.out.println(s);
+		}
+		System.out.println("Listing sample sewing students.");
+		for (Student s : courses.get("sewing").getStudents()) {
+			System.out.println(s);
+		}
+		System.out.println("Listing sample writing students.");
+		for (Student s : courses.get("writing").getStudents()) {
+			System.out.println(s);
+		}
+		
 		// Load directories for file storage
 		loadDirectories();
-		
 		CourseMenu c = new CourseMenu();
 		c.displayOptions();
 	}
@@ -49,7 +71,7 @@ public class CourseManagementSystem {
 		HashSet<Student> sewingStudents = new HashSet<Student>();
 		Course sewing = new Course("0002", "Nanny Doubtfire", 60, 3000, sewingStudents, 750, 2500, CourseType.SEWING);
 		for (int i=0; i<=sewing.getEnrolmentCapacity(); i++) {
-			cookingStudents.add(new Student(
+			sewingStudents.add(new Student(
 											generateRandName(), 
 											generateRandAge(), 
 											generateRandAddress(),
@@ -61,7 +83,7 @@ public class CourseManagementSystem {
 		HashSet<Student> writingStudents = new HashSet<Student>();
 		Course writing = new Course("0004", "Steven Spielberg", 90, 5000, writingStudents, 1250, 4000, CourseType.WRITING);
 		for (int i=0; i<=writing.getEnrolmentCapacity(); i++) {
-			cookingStudents.add(new Student(
+			writingStudents.add(new Student(
 											generateRandName(), 
 											generateRandAge(), 
 											generateRandAddress(),
@@ -69,6 +91,9 @@ public class CourseManagementSystem {
 											generateRandEnrolment())
 										   );
 		}
+		courses.put("cooking", cooking);
+		courses.put("sewing", sewing);
+		courses.put("writing", writing);
 	}
 	
 	private static String generateRandName() {
@@ -99,4 +124,16 @@ public class CourseManagementSystem {
 		return ThreadLocalRandom.current().nextInt(2) == 1 ? true : false;
 	}
 	
+	// #getInstance used to access getters for courses
+	
+	public synchronized static CourseManagementSystem getInstance() {
+		if (instance == null) {
+			instance = new CourseManagementSystem();
+		}
+		return instance;
+	}
+	
+	public Map<String, Course> getCourses() {
+		return courses;
+	}
 }

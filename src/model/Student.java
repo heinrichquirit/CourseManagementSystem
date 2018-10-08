@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 
 import model.interfaces.Person;
+import util.Utils;
 
 public class Student implements Person, Serializable {
 
@@ -27,7 +28,7 @@ public class Student implements Person, Serializable {
 	public Student(String name, 
 					int age, String address, 
 					double courseFees, boolean hasPreviousEnrolment) {
-		id = count++;
+		this.id = count++;
 		this.name = name;
 		this.age = age;
 		this.address = address;
@@ -86,13 +87,15 @@ public class Student implements Person, Serializable {
 	@Override
 	public String toString() {
 		return String.format(
-								"%s%d%s%s%s%d%s%s%s%d%s%b", 
+								"%s%s\n%s%s\n%s%s\n%s%s\n%s%s\n%s%b\n%s%s\n====================", 
 								"Id: ", id,
 								"Name: ", name,
 								"Age: ", age,
 								"Address: ", address,
 								"CourseFees: ", courseFees,
-								"PreviouslyEnrolled: ", hasPreviousEnrolment);
+								"PreviouslyEnrolled: ", hasPreviousEnrolment,
+								"CoursesEnrolled: ", Utils.findStudentCourses(id)
+							);
 	}
 
 }
